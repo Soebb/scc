@@ -61,6 +61,10 @@ async def link_handler(bot, message):
             await message.reply(f"{result}", quote=True)
     
 
+async def link_handler(bot, message):
+    if "dl" in message.text:
+        input = message.text.replace("dl", " ")
+        finput = f"{input}" + ".list"
 
 
 bot.run()

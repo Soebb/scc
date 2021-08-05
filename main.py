@@ -60,7 +60,7 @@ async def link_handler(bot, message):
             link = (i.get_attribute('href'))
 	    f = open(message.text+'.list', 'a+')
 	    f.write(link + '\n')
-f.close
+    f.close
 	    result = i.get_attribute('href')
             await message.reply(f"{result}", quote=True)
     

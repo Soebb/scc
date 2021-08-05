@@ -1,6 +1,6 @@
 #_*_coding: utf-8_*_
 
-import os, unittest, time, datetime
+import os, unittest, time, datetime, asyncio
 import urllib.request, urllib.error, urllib.parse
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -65,10 +65,10 @@ async def link_handler(bot, message):
             await message.reply(f"{result}", quote=True)
     
 
-async def dl(bot, message):
+async def dl(bot, message, result):
     if "dl" in message.text:
-        input = message.text.replace("dl", " ")
-        finput = f"{input}" + ".list"
+         input = f"{result}"
+
 
 
 bot.run()

@@ -30,7 +30,7 @@ async def start(bot, message):
 
 @bot.on_message(filters.private & filters.regex(pattern=".*http.*"))
 async def link_handler(bot, message):
-    url = f"{message.text}"
+    url = f"{message.text}" if not "dl" in message.text
     channelid = url.split('/')[4]
     #driver=webdriver.Firefox()
     chrome_options = Options()
@@ -57,11 +57,15 @@ async def link_handler(bot, message):
     user_data = driver.find_elements_by_xpath('//*[@id="video-title"]')
     for i in user_data:
 	    print(i.get_attribute('href'))
+            link = (i.get_attribute('href'))
+	    f = open(message.text+'.list', 'a+')
+	    f.write(link + '\n')
+f.close
 	    result = i.get_attribute('href')
             await message.reply(f"{result}", quote=True)
     
 
-async def link_handler(bot, message):
+async def dl(bot, message):
     if "dl" in message.text:
         input = message.text.replace("dl", " ")
         finput = f"{input}" + ".list"
